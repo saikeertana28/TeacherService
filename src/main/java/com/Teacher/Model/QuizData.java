@@ -10,6 +10,7 @@ public class QuizData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int quizId;
     private String quizName;
+    private int teacherId;
     private String teacherName;
     private String quizDescription;
     private String category;
@@ -20,9 +21,10 @@ public class QuizData {
     public QuizData() {
     }
 
-    public QuizData(int quizId, String quizName, String teacherName, String quizDescription, String category, List<Integer> question_numbers,List<String> emails) {
+    public QuizData(int quizId, String quizName,int teacherId, String teacherName, String quizDescription, String category, List<Integer> question_numbers,List<String> emails) {
         this.quizId = quizId;
         this.quizName = quizName;
+        this.teacherId = teacherId;
         this.teacherName = teacherName;
         this.quizDescription = quizDescription;
         this.category = category;
@@ -53,7 +55,12 @@ public class QuizData {
     public void setQuizName(String quizName) {
         this.quizName = quizName;
     }
-
+   public int getTeacherId() {
+        return teacherId;
+   }
+   public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+   }
     public String getTeacherName() {
         return teacherName;
     }

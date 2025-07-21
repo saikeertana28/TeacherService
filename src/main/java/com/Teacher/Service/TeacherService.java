@@ -1,5 +1,4 @@
 package com.Teacher.Service;
-
 import com.Teacher.Model.QuestionDao;
 import com.Teacher.Model.QuizData;
 import com.Teacher.Others.AllQuizData;
@@ -45,7 +44,8 @@ public class TeacherService {
         QuizData quizData = new QuizData();
         quizData.setEmails(data.getEmails());
         quizData.setQuizName(data.getQuizName());
-        quizData.setTeacherName("Teacher");
+        quizData.setTeacherId(data.getTeacherId());
+        quizData.setTeacherName(data.getTeacherName());
         quizData.setQuizDescription(data.getQuizDescription());
         quizData.setCategory(data.getCategory());
 
@@ -74,8 +74,8 @@ public class TeacherService {
                 q_nums.add(saved.getQno());
             }
         }
-
-        try {
+        try
+        {
             quizData.setQuestion_numbers(q_nums);
             quizRepo.save(quizData);
             return new ResponseEntity<>("success", HttpStatus.OK);
@@ -84,7 +84,6 @@ public class TeacherService {
             return new ResponseEntity<>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     private void sendEmails(List<String> emails,String category,String quizName,String quizDescription) {
         String mess = "You are invited to participate in a quiz on '" + category + "' titled '" + quizName + "'.\n"
                 + "Description: " + quizDescription + ". Please join and test your knowledge!";
@@ -97,8 +96,8 @@ public class TeacherService {
             mailSender.send(message);
         }
     }
-    public ResponseEntity<List<ConductedQuizByTeacher>> getConductedQuestions(String teacherName) {
-        List<QuizData> qz = quizRepo.findByTeacherName(teacherName);
+    public ResponseEntity<List<ConductedQuizByTeacher>> getConductedQuestions(int teacherId) {
+        List<QuizData> qz = quizRepo.findByTeacherId(teacherId);
         List<ConductedQuizByTeacher> conductedQuiz = new ArrayList<>();
         for(QuizData quiz : qz) {
             ConductedQuizByTeacher conquiz = new ConductedQuizByTeacher();

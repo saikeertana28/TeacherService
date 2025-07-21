@@ -1,5 +1,4 @@
 package com.Teacher.Service;
-
 import com.Teacher.Model.QuestionDao;
 import com.Teacher.Model.QuizData;
 import com.Teacher.Repository.QuestionRepo;
@@ -7,10 +6,6 @@ import com.Teacher.Repository.QuizRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
 @Service
 public class QuizService {
@@ -18,7 +13,6 @@ public class QuizService {
     QuizRepo quizRepo;
     @Autowired
     QuestionRepo questionRepo;
-
     public List<QuizData> findQuizzesByStudentEmail(String email) {
         return quizRepo.findQuizzesByStudentEmail(email);
     }
@@ -26,5 +20,4 @@ public class QuizService {
         List<QuestionDao> result = questionRepo.findByQnoIn(qnos);
         return ResponseEntity.ok(result);
     }
-
 }

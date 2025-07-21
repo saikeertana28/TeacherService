@@ -33,9 +33,9 @@ public class TeacherClass {
     private ResponseEntity<String> createQuiz(@RequestBody AllQuizData data){
         return teacherService.createQuiz(data);
     }
-    @GetMapping("conductedQuestions/{teachername}")
-    private ResponseEntity<List<ConductedQuizByTeacher>> getConductedQuestions(@PathVariable String teachername) {
-        return teacherService.getConductedQuestions(teachername);
+    @GetMapping("conductedQuestions/{teacherId}")
+    private ResponseEntity<List<ConductedQuizByTeacher>> getConductedQuestions(@PathVariable int teacherId) {
+        return teacherService.getConductedQuestions(teacherId);
     }
     @GetMapping("questionsforquiz/{quizid}")
     private ResponseEntity<List<QuestionDao>> getQuestionsforQuiz(@PathVariable Integer quizid) {

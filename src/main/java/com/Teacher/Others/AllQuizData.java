@@ -7,6 +7,8 @@ import java.util.List;
 public class AllQuizData {
     private String quizName;
     private String quizDescription;
+    private int teacherId;
+    private String teacherName;
     private String category;
     private List<String> Emails;
     private List<QuestionDao> questions;
@@ -57,5 +59,17 @@ public class AllQuizData {
 
     public void setQuestions(List<QuestionDao> questions) {
         this.questions = questions;
+    }
+    public int getTeacherId() {
+        return teacherId;
+    }
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
+    public String getTeacherName() {
+        return teacherName;
+    }
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 }
